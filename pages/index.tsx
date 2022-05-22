@@ -24,11 +24,19 @@ const Home: NextPage<Props> = ({ items }) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <header>
+                <h1 className="text-5xl my-16 text-center text-primary">
+                    My Blog
+                </h1>
+            </header>
             <div className="container mx-auto lg:w-1/2">
                 {items.map((entry, index) => {
                     return <PostTile key={index} entry={entry} />;
                 })}
             </div>
+            <footer className="text-center my-12">
+                &copy; {new Date().getFullYear()}
+            </footer>
         </div>
     );
 };
