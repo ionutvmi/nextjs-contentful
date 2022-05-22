@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { createClient, Entry, EntryFields } from "contentful";
+import PostTile from "../components/PostTile";
 
 interface Post {
     title: string;
@@ -23,30 +24,11 @@ const Home: NextPage<Props> = ({ items }) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            {items.map((entry) => {
-                return (
-                    <>
-                        <h1>{entry.fields.title}</h1>
-                        <div>
-                            {entry.fields.body.content.map((content, index) => {
-                                return (
-                                    <div key={index}>
-                                        {content.content?.map(
-                                            (subContent, subIndex) => {
-                                                return (
-                                                    <div key={subIndex}>
-                                                        {subContent.value}
-                                                    </div>
-                                                );
-                                            }
-                                        )}
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </>
-                );
-            })}
+            <div className="container mx-auto lg:w-1/2">
+                {items.map((entry, index) => {
+                    return <PostTile key={index} entry={entry} />;
+                })}
+            </div>
         </div>
     );
 };
