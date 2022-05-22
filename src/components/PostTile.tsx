@@ -1,10 +1,7 @@
-import { Entry, EntryFields } from "contentful";
+import { Entry } from "contentful";
 import React from "react";
-
-interface Post {
-    title: string;
-    body: EntryFields.RichText;
-}
+import { Post } from "../types/interfaces";
+import EntryBody from "./EntryBody";
 
 interface Props {
     entry: Entry<Post>;
@@ -19,7 +16,7 @@ export default function PostTile({ entry }: Props) {
     };
 
     return (
-        <div className="border border-primary my-2 p-4 flex content-center">
+        <div className="border rounded-lg border-primary my-2 p-4 flex content-center">
             <div className="avatar">
                 <div className="w-32 mask mask-hexagon">
                     <img
@@ -39,22 +36,6 @@ export default function PostTile({ entry }: Props) {
                 </div>
                 <EntryBody entry={entry} />
             </div>
-        </div>
-    );
-}
-
-function EntryBody({ entry }: { entry: Entry<Post> }) {
-    return (
-        <div className="">
-            {entry.fields.body.content.map((content, index) => {
-                return (
-                    <div key={index}>
-                        {content.content?.map((subContent, subIndex) => {
-                            return <div key={subIndex}>{subContent.value}</div>;
-                        })}
-                    </div>
-                );
-            })}
         </div>
     );
 }
