@@ -51,7 +51,7 @@ const Home: NextPage<Props> = ({ items }) => {
     );
 };
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
     const client = createClient({
         space: process.env.CF_SPACE_ID || "",
         environment: process.env.CF_ENVIRONMENT,
@@ -59,7 +59,6 @@ export async function getStaticProps(context) {
     });
 
     let entries = await client.getEntries();
-    console.log(entries.items);
 
     return {
         props: {
