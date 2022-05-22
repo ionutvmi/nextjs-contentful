@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { themeChange } from "theme-change";
 import ThemeDropdown from "../components/ThemeDropdown";
 
+import Link from "next/link";
+
 interface Post {
     title: string;
     body: EntryFields.RichText;
@@ -33,7 +35,9 @@ const Home: NextPage<Props> = ({ items }) => {
             </Head>
             <header className="text-center flex container justify-between mx-auto lg:w-3/4">
                 <h1 className="text-5xl my-16 text-primary">
-                    <a href="/">My Blog</a>
+                    <Link href="/">
+                        <a>My Blog</a>
+                    </Link>
                 </h1>
                 <ThemeDropdown className="self-center" />
             </header>

@@ -12,7 +12,7 @@ interface Props {
 
 export default function PostTile({ entry }: Props) {
     const publishDate = new Date(entry.sys.createdAt);
-    const formatOptions = {
+    const formatOptions: Intl.DateTimeFormatOptions = {
         day: "numeric",
         month: "long",
         year: "numeric",
@@ -27,6 +27,7 @@ export default function PostTile({ entry }: Props) {
                             "https://picsum.photos/200/200?random=" +
                             publishDate.getTime()
                         }
+                        alt={entry.fields.title}
                     />
                 </div>
             </div>
