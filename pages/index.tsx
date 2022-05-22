@@ -3,6 +3,9 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { createClient, Entry, EntryFields } from "contentful";
 import PostTile from "../components/PostTile";
+import { useEffect, useState } from "react";
+import { themeChange } from "theme-change";
+import ThemeDropdown from "../components/ThemeDropdown";
 
 interface Post {
     title: string;
@@ -14,6 +17,10 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ items }) => {
+    useEffect(() => {
+        themeChange(false);
+    }, []);
+
     return (
         <div className={styles.container}>
             <Head>
@@ -24,18 +31,19 @@ const Home: NextPage<Props> = ({ items }) => {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <header>
-                <h1 className="text-5xl my-16 text-center text-primary">
-                    My Blog
+            <header className="text-center flex container justify-between mx-auto lg:w-3/4">
+                <h1 className="text-5xl my-16 text-primary">
+                    <a href="/">My Blog</a>
                 </h1>
+                <ThemeDropdown className="self-center" />
             </header>
-            <div className="container mx-auto lg:w-1/2">
+            <div className="container mx-auto lg:w-3/4">
                 {items.map((entry, index) => {
                     return <PostTile key={index} entry={entry} />;
                 })}
             </div>
             <footer className="text-center my-12">
-                &copy; {new Date().getFullYear()}
+                &copy; {new Date().getFullYear()} Mihai Ionut Vilcu
             </footer>
         </div>
     );

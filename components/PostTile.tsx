@@ -19,7 +19,7 @@ export default function PostTile({ entry }: Props) {
     };
 
     return (
-        <div className="border my-2 p-4 flex content-center">
+        <div className="border border-primary my-2 p-4 flex content-center">
             <div className="avatar">
                 <div className="w-32 mask mask-hexagon">
                     <img
